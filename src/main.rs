@@ -55,7 +55,7 @@ async fn main() -> Result<()> {
         .await?;
 
     let app = Router::new()
-        .route("/auth", post(auth_check))
+        .route("/auth", post(auth_check).get(auth_check))
         .with_state(pool);
 
     let listener = TcpListener::bind("0.0.0.0:8080").await?;
